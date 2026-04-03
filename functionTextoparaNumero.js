@@ -1,3 +1,4 @@
+//insira o nome escrito por extenso no txt e ele lhe enviará o numero inteiro ou decimal que tenha escrito
 function NinTxt(txt) {
 //Salva as palavras dos números dividido em unidade e usando os índices para determinar hierarquia
 const NmBr = [
@@ -612,5 +613,3 @@ function analist1decimal () {
     };
   return Number(Resultado);
 }; //fechamento da função global
-let teste = NinTxt(prompt(''));
-console.log(teste);
