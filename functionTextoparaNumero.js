@@ -45,7 +45,6 @@ NTrb = NTrb.join(" ");
 NTrb = NTrb.split(" ");
 //função de tratamento do texto que diminui chance de erro
 function textual (txtm) {
-  console.log('Entrada:', txtm, '||\n');
   let spend = txtm.length - 1;
   let virgucont = 0;
   let hjk = txtm.length;
@@ -97,7 +96,6 @@ function textual (txtm) {
    NTrb = txtm;//fim do for primario
 }; //fim funcao textual
 textual(NTrb);
-console.log('Saída: ', NTrb);
 //tira ultimo índice do texto
 let NTrbQTT = NTrb.length - 1;
 //tira último índice da lista total
