@@ -36,6 +36,8 @@ numero: []
 //armazena alguns erros
 let ERRORS = 0;
 let ERROR = [];
+//armazena se é negativo
+let negatividade = 0;
 //resulto multi
 let mm = 0;
 //transforma o texto em um texto manipulável
@@ -55,6 +57,12 @@ function textual (txtm) {
       uik++;
       continue;
     };//fim primeiro if
+    if (txtm[uik] == "menos") {
+      negatividade++;
+      txtm.splice(uik, 1);
+      hjk--;
+      continue;
+    };
     if (txtm[uik] == ""){
       txtm.splice(uik, 1);
       hjk--;
@@ -483,13 +491,23 @@ Indety(NTrb[NmAt], ATT);
     Indety(NTrb[NmAt + 1], UNPT);
     AFF++;
   };//fim do primeiro if do comparator
+  // coloca um necessario em caso de quebra de contexto
+  if (ATT[0] == 3 && ATT[2] > 1) {
+    if (UNPT[0] == 3 && UNPT[2] > 1) {
+      let fallendown = NmAt + 1;
+       NTrb.splice(fallendown, 0, "um");
+      UNPT = [];
+      Indety(NTrb[NmAt + 1], UNPT);
+      NTrbQTT++;
+    }; // fim primeira clasula
+  }; //fim if englobador
 //se vier depois da vigula é racional
 if (aposVirgula) {
        Racional++;
          };
   //codigo quebra multiplicador
 if (UNPT[0] == 3 && (UNPT[2] !== 1) && Racional == 0) {
-    memory.push(NTrb[NmAt + 1]);
+    memory.push(UNPT[2]);
     multi();
     if (mm == 1) {
       Racional++;
@@ -609,5 +627,9 @@ function analist1decimal () {
   if (ERRORS > 0) {
   console.log(ERROR);
     };
-  return Number(Resultado);
+  if (negatividade > 0) {
+    return -1 * Number(Resultado);
+  } else {
+     return Number(Resultado);
+  };
 }; //fechamento da função global
